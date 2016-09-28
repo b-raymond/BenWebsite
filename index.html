@@ -3,9 +3,46 @@
    <HEAD>
       <TITLE>Ben's First HTML document</TITLE>
 	  <link rel="stylesheet" type="text/css" href="style.css">
+	  	  <script>
+	  
+  var today = new Date();
+  var expires = new Date(today.getTime() + 30 * 24 * 3600 * 1000);
+
+  function setCookie(cname, cvalue)
+  {
+    document.cookie=cname + "=" + escape(cvalue) + "; path=/; expires=" + expires.toGMTString();
+  }
+  
+  function putCookie(form)
+  {
+   setCookie("userName", form[0].usrname.value);
+
+    return true;
+  }
+  
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+  } 
+
+
+   </script>
    </HEAD>
    <BODY>
-      <P>This is the index</p>
+    <div id="signin">
+	<p>Hello <span id="showName"></span></p>
+	<script>document.getElementById("showName").innerHTML = getCookie('userName');</script>
+	</div>
 	  <table>
 		<tr>
 			<td><a href="BenWebsitePage1.html">Page 1</a></td>			
