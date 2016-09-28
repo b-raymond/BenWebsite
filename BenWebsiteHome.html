@@ -3,26 +3,72 @@
    <HEAD>
       <TITLE>Ben's First HTML document</TITLE>
 	  <link rel="stylesheet" type="text/css" href="style.css">
+	  <script>
+	  
+  var today = new Date();
+  var expires = new Date(today.getTime() + 30 * 24 * 3600 * 1000);
+
+  function setCookie(cname, cvalue)
+  {
+    document.cookie=cname + "=" + escape(cvalue) + "; path=/; expires=" + expires.toGMTString();
+  }
+  
+  function putCookie(form)
+  {
+   setCookie("userName", form[0].usrname.value);
+
+    return true;
+  }
+  
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+  } 
+
+
+   </script>
    </HEAD>
    <BODY>
-      <P>This is the home page</p>
-	  <a href="BenWebsitePage1.html">Page 1</a> <br>
-	  <a href="BenWebsiteIndex.html">Index</a>
-	  <h1 id="heading1">Welcome</h1>
-	  <hr>
-	  <h2>All About Sandwiches</h2>
-	  <p> Hello my name is Ben Raymond and I made this website dedicated to <i>the art of the sandwich</i>. <br>
-	  Because of my vast sandwich experience, I like to consider my self a <em>sandwich connoisseur</em>. <br>
-	  There are many different types of sandwhiches: peanutbutter and jelly, grilled cheese, and chicken salad. <br>
-	  Personally, I grew up eating only peanutbutter sandwiches.</p>
-	  <img src="https://www.owenbrotherscatering.com/media/catalog/product/cache/1/image/500x500/d44b222537512117c10d2a6b8c684f77/1/_/1_84.jpg"
-           alt="Sandwich"
-           title="Sandwich" />
-	  <p> All the sandwiches listed on this site are high quality and pass requirements sets by the <p><abbr title="Food and Drug Administration">FDA</abbr></p>
-	  <hr />
-	  <div style="color:gray"><h2>Disclaimer</h2>
-	  <p>I do not accept responsibility for any bodily harm that results from eating these sandwiches</p><div>
-	  
-	  <a href="#heading1">Go to top</a>
+    
+	<div id="signin">
+	<P>Sign in</p>	  
+	<form>
+	<input type="text" value="Enter Username" id="nameBox" name='usrname'>
+	<input type="button" value="Go!" id="submit" onclick="putCookie(document.getElementsByTagName('form'));">
+	</form>
+	<p>Hello <span id="showName"></span></p>
+	<script>document.getElementById("showName").innerHTML = getCookie('userName');</script>
+	</div>
+
+	<a href="BenWebsitePage1.html">Page 1</a> <br>
+	<a href="BenWebsiteIndex.html">Index</a>
+
+	<h1 id="heading1">Welcome</h1>
+	<hr>
+	<h2>All About Sandwiches</h2>
+	<p> Hello my name is Ben Raymond and I made this website dedicated to <i>the art of the sandwich</i>. <br>
+	Because of my vast sandwich experience, I like to consider my self a <em>sandwich connoisseur</em>. <br>
+	There are many different types of sandwhiches: peanutbutter and jelly, grilled cheese, and chicken salad. <br>
+	Personally, I grew up eating only peanutbutter sandwiches.</p>
+	<img src="https://www.owenbrotherscatering.com/media/catalog/product/cache/1/image/500x500/d44b222537512117c10d2a6b8c684f77/1/_/1_84.jpg"
+	   alt="Sandwich"
+	   title="Sandwich" />
+	<p> All the sandwiches listed on this site are high quality and pass requirements sets by the <p><abbr title="Food and Drug Administration">FDA</abbr></p>
+	<hr />
+	<div style="color:gray"><h2>Disclaimer</h2>
+	<p>I do not accept responsibility for any bodily harm that results from eating these sandwiches</p><div>
+
+	<a href="#heading1">Go to top</a>
+	
    </BODY>
 </HTML>
